@@ -1,4 +1,8 @@
+/* ------------------------------------------ */
+/* Função que devolve o resultado da pesquisa */
+/* ------------------------------------------ */
 function pesquisar(){
+    /* Criando as variávies que serão utilizadas no código */
     let section = document.getElementById("resultados-pesquisa");
     let campoPesquisa = document.getElementById("campo-pesquisa").value;
     let resultados = "";
@@ -9,13 +13,15 @@ function pesquisar(){
     let sinopse = ""; 
     let tags = "";
 
+    /* Verificando se o usuário digitou algum argumento para pesquisa*/
     if (!campoPesquisa){
         section.innerHTML = "<p>Nenhuma informação foi encontrada. Digite alguma informação sobre o evento desejado!</p>"
         return;
     }
-
+    /* Convertendo o conteúdo para minúsculo para facilitar a busca pelo argumento informado pelo usuário*/ 
     campoPesquisa = campoPesquisa.toLowerCase();
 
+    /* Loop para carregar os objetos na variável que será exibida pelo código html*/
     for (let dado of dados){
         titulo = dado.titulo.toLowerCase();
         stream = dado.stream.toLowerCase();
@@ -38,11 +44,12 @@ function pesquisar(){
             `;
         } 
     }
+        /* Verifica se a pesquisa retornou ou não dados*/
         if (!resultados){
             resultados = "<p>Nada foi encontrado</p>"    
    
 }
-
+    /* Envia informações para o código html*/
     section.innerHTML = resultados;
 }
 
